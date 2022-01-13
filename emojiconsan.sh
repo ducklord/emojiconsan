@@ -1,5 +1,5 @@
 #!/bin/bash
-backupdir=./emojis
+backupdir=/emojis
 
 if [ -z ${TOKEN+x} ]; then
     echo "Missing token"
