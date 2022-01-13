@@ -57,3 +57,5 @@ curl -s -H "$bearerheader" "https://slack.com/api/emoji.list" \
       fi
     fi
   done
+
+date > /emojiconsan.stamp
