@@ -1,6 +1,16 @@
 #!/bin/bash
 backupdir=./emojis
 
+if [ -z ${TOKEN+x} ]; then
+    echo "Missing token"
+    exit 1
+fi
+
+if [ -z ${HOOK+x} ]; then
+    echo "Missing web hook"
+    exit 1
+fi
+
 bearerheader="Authorization: Bearer $TOKEN"
 webhookurl="https://hooks.slack.com/services/$HOOK"
 
@@ -14,9 +24,7 @@ function save_emoji {
 
 function message {
     message="${1}"
-    #!!
-    #curl -X POST -H 'Content-type: application/json' --data '{"text":"$message"}' $webhookurl &>/dev/null
-    echo "MSG $message"
+    curl -X POST -H 'Content-type: application/json' --data '{"text":"$message"}' $webhookurl &>/dev/null
 }
 
 #TODO detect deleted emojis
