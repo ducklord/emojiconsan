@@ -24,7 +24,7 @@ function save_emoji {
 
 function message {
     message="${1}"
-    curl -X POST -H 'Content-type: application/json' --data '{"text":"$message"}' $webhookurl &>/dev/null
+    curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"$message\"}" $webhookurl# &>/dev/null
 }
 
 #TODO detect deleted emojis
