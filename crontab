@@ -7,6 +7,6 @@
 # |  |  |  |  |
 # *  *  *  *  * user-name command to be executed
 
-*/30 * * * * root /emojiconsan.sh
+*/15 * * * * root /emojiconsan.sh
 
 # An empty line is required at the end of this file for a valid cron file.
