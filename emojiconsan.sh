@@ -1,4 +1,7 @@
 #!/bin/bash
+echo -n Start: >> /emojiconsan.log
+date >> /emojiconsan.log
+
 backupdir=/emojis
 
 if [ -z ${TOKEN+x} ]; then
@@ -58,4 +61,5 @@ curl -s -H "$bearerheader" "https://slack.com/api/emoji.list" \
     fi
   done
 
-date > /emojiconsan.stamp
+echo -n End: >> /emojiconsan.log
+date >> /emojiconsan.log
