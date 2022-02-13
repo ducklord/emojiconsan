@@ -63,3 +63,4 @@ curl -s -H "$bearerheader" "https://slack.com/api/emoji.list" \
 
 echo -n End: >> /emojiconsan.log
 date >> /emojiconsan.log
+touch /monitoring/emojiconsan.stamp
