@@ -8,9 +8,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 COPY crontab /etc/cron.d/simple-cron
-COPY ./emojiconsan.sh /
+COPY ./emojiconsan.py /
 
-RUN chmod +x /emojiconsan.sh
 RUN chmod 0644 /etc/cron.d/simple-cron
 
 COPY entrypoint.sh /
