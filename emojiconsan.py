@@ -3,6 +3,7 @@ import json
 import os
 import requests
 import sys
+from pathlib import Path
 from urllib.parse import urlparse
 
 backupdir = '/emojis'
@@ -48,6 +49,4 @@ for (name, url) in data['emoji'].items():
             save_emoji(url, filename)
             message("New emoji :%s: (%s)" % (name, name))
 
-stampfile = '/monitoring/emojiconsan.stamp'
-with os.open(stampfile, 'a'):
-    os.utime(stampfile)
+Path('/monitoring/emojiconsan.stamp').touch()
