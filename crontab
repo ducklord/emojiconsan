@@ -7,6 +7,6 @@
 # |  |  |  |  |
 # *  *  *  *  * user-name command to be executed
 
-*/5 * * * * root /emojiconsan.sh
+*/5 * * * * root python /emojiconsan.py
 
 # An empty line is required at the end of this file for a valid cron file.
