@@ -5,7 +5,7 @@ import requests
 import sys
 from urllib.parse import urlparse
 
-backupdir = './emojis'
+backupdir = '/emojis'
 
 check_size = False
 if len(sys.argv) > 1:
@@ -47,3 +47,7 @@ for (name, url) in data['emoji'].items():
         else:
             save_emoji(url, filename)
             message("New emoji :%s: (%s)" % (name, name))
+
+stampfile = '/monitoring/emojiconsan.stamp'
+with os.open(stampfile, 'a'):
+    os.utime(stampfile)
