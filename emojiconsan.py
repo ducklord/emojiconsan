@@ -13,6 +13,8 @@ if len(sys.argv) > 1:
     if sys.argv[1] == '--check-size':
         check_size = True
 
+existing_list = os.listdir(backupdir)
+
 def message(msg):
     webhookurl="https://hooks.slack.com/services/" + os.environ['HOOK']
     response = requests.post(url = webhookurl, data = "{\"text\":\"%s\"}" % msg)
@@ -36,6 +38,7 @@ for (name, url) in data['emoji'].items():
         path = urlparse(url).path
         extension = os.path.splitext(path)[1]
         filename = "%s/%s%s" % (backupdir, name, extension)
+        existing_list.remove("%s%s" % (name, extension))
         if os.path.isfile(filename):
             if check_size:
                 response = requests.head(url)
@@ -50,3 +53,7 @@ for (name, url) in data['emoji'].items():
             message("New emoji :%s: (%s)" % (name, name))
 
 Path('/monitoring/emojiconsan.stamp').touch()
+
+# TODO: figure out a way to not list deleted emojis every time it is run
+for name in existing_list:
+    message("Deleted emoji %s" % (name, name))
